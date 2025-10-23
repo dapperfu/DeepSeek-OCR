@@ -66,25 +66,64 @@
 
 ## Install
 >Our environment is cuda11.8+torch2.6.0.
+
+### Prerequisites
+- Python 3.12.9
+- CUDA 11.8 toolkit
+- Git
+
+### Quick Installation
+
 1. Clone this repository and navigate to the DeepSeek-OCR folder
 ```bash
 git clone https://github.com/deepseek-ai/DeepSeek-OCR.git
+cd DeepSeek-OCR
 ```
-2. Conda
-```Shell
-conda create -n deepseek-ocr python=3.12.9 -y
-conda activate deepseek-ocr
-```
-3. Packages
 
-- download the vllm-0.8.5 [whl](https://github.com/vllm-project/vllm/releases/tag/v0.8.5) 
-```Shell
-pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu118
-pip install vllm-0.8.5+cu118-cp38-abi3-manylinux1_x86_64.whl
+2. **Option A: Automated Setup (Recommended)**
+```bash
+# Using the setup script
+./setup.sh
+
+# Or using Makefile
+make install-all
+```
+
+3. **Option B: Manual Setup**
+```bash
+# Create virtual environment
+python3.12 -m venv venv
+source venv/bin/activate
+
+# Install dependencies
+pip install --upgrade pip
 pip install -r requirements.txt
+pip install torch==2.6.0 torchvision==0.21.0 torchaudio==2.6.0 --index-url https://download.pytorch.org/whl/cu118
+
+# Download and install vLLM wheel
+wget https://github.com/vllm-project/vllm/releases/download/v0.8.5/vllm-0.8.5+cu118-cp38-abi3-manylinux1_x86_64.whl
+pip install vllm-0.8.5+cu118-cp38-abi3-manylinux1_x86_64.whl
+
+# Install flash-attention
 pip install flash-attn==2.7.3 --no-build-isolation
 ```
+
+4. **Activate the environment**
+```bash
+source venv/bin/activate
+```
+
 **Note:** if you want vLLM and transformers codes to run in the same environment, you don't need to worry about this installation error like: vllm 0.8.5+cu118 requires transformers>=4.51.1
+
+### Development Setup
+For development work, also install development dependencies:
+```bash
+# Using setup script
+./setup.sh --dev
+
+# Or using Makefile
+make install-dev
+```
 
 ## vLLM-Inference
 - VLLM:

@@ -1,0 +1,20 @@
+# Development dependencies for DeepSeek-OCR
+# These packages are required for development, testing, and documentation
+
+# Type checking and static analysis
+mypy>=1.8.0
+
+# Testing framework
+pytest>=7.4.0
+pytest-cov>=4.1.0
+
+# Code formatting and linting
+black>=23.0.0
+flake8>=6.0.0
+isort>=5.12.0
+
+# Documentation
+strictdoc>=0.0.50
+
+# Development utilities
+pre-commit>=3.5.0

@@ -1,0 +1,93 @@
+[REQUIREMENT]
+UID: REQ-001
+STATUS: Draft
+TITLE: Remove Conda Dependency and Migrate to Vanilla Python Virtual Environment
+
+DESCRIPTION:
+The DeepSeek-OCR project currently requires Conda for environment management, creating unnecessary complexity and dependency overhead. This requirement specifies the migration to vanilla Python virtual environments (venv) to simplify installation and reduce external dependencies.
+
+RATIONALE:
+- Conda adds unnecessary complexity for a Python-only project
+- All dependencies are pip-installable and don't require Conda-specific features
+- Virtual environments (venv) are the standard Python packaging approach
+- Reduces installation barriers for users without Conda
+- Simplifies CI/CD pipelines and deployment processes
+
+ACCEPTANCE_CRITERIA:
+- [ ] Python 3.12.9 virtual environment can be created using standard venv
+- [ ] All dependencies installable via pip without Conda
+- [ ] Installation process documented with both Makefile and shell script options
+- [ ] README.md updated to remove Conda references
+- [ ] Backward compatibility maintained for existing functionality
+- [ ] Development dependencies separated into requirements-dev.txt
+
+[REQUIREMENT]
+UID: REQ-002
+STATUS: Draft
+TITLE: System Requirements for Vanilla Python Setup
+
+DESCRIPTION:
+Define the minimum system requirements for running DeepSeek-OCR with vanilla Python virtual environments.
+
+RATIONALE:
+Clear system requirements ensure users can successfully install and run the project without Conda.
+
+ACCEPTANCE_CRITERIA:
+- [ ] Python 3.12.9 available on system
+- [ ] CUDA 11.8 toolkit installed
+- [ ] Sufficient disk space for virtual environment and dependencies
+- [ ] Compatible operating system (Linux/Windows/macOS)
+
+[REQUIREMENT]
+UID: REQ-003
+STATUS: Draft
+TITLE: Automated Installation Process
+
+DESCRIPTION:
+Provide automated installation methods for users to set up the environment without manual dependency management.
+
+RATIONALE:
+Automation reduces installation errors and improves user experience.
+
+ACCEPTANCE_CRITERIA:
+- [ ] Makefile with targets for venv creation and dependency installation
+- [ ] Shell script (setup.sh) as alternative installation method
+- [ ] Clear progress messages during installation
+- [ ] Error handling for missing dependencies
+- [ ] Support for both vLLM and Transformers inference modes
+
+[REQUIREMENT]
+UID: REQ-004
+STATUS: Draft
+TITLE: Development Environment Setup
+
+DESCRIPTION:
+Separate development dependencies from production dependencies to maintain clean separation of concerns.
+
+RATIONALE:
+Development tools should not be required for production installations.
+
+ACCEPTANCE_CRITERIA:
+- [ ] requirements-dev.txt created with development dependencies
+- [ ] mypy included for type checking compliance
+- [ ] pytest included for testing framework
+- [ ] strictdoc included for requirements management
+- [ ] Clear documentation on development vs production installation
+
+[REQUIREMENT]
+UID: REQ-005
+STATUS: Draft
+TITLE: Documentation Updates
+
+DESCRIPTION:
+Update all documentation to reflect the migration from Conda to vanilla Python virtual environments.
+
+RATIONALE:
+Accurate documentation is essential for user adoption and successful installation.
+
+ACCEPTANCE_CRITERIA:
+- [ ] README.md installation section updated
+- [ ] Conda references removed from documentation
+- [ ] Virtual environment setup instructions provided
+- [ ] Troubleshooting section updated
+- [ ] Examples remain functional with new setup
