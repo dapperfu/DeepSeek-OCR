@@ -1,0 +1,122 @@
+[DOCUMENT]
+TITLE: Jersey Number Extraction Prompts
+
+[REQUIREMENT]
+UID: REQ-001
+STATEMENT: >>>
+The system shall provide multiple prompt variations for extracting jersey numbers from soccer player images using DeepSeek-OCR.
+
+Acceptance Criteria:
+- At least 10 different prompt variations shall be implemented
+- Prompts shall be categorized by strategy type
+- Each prompt shall be tested against all images in the jersies/ folder
+- Results shall be organized in structured output directories
+- Performance comparison shall be generated
+<<<
+
+[REQUIREMENT]
+UID: REQ-002
+STATEMENT: >>>
+The system shall implement simple, direct prompts for jersey number extraction.
+
+Acceptance Criteria:
+- Prompt 1.1: "<image>\nFind Soccer Jersey Numbers"
+- Prompt 1.2: "<image>\nExtract jersey numbers"
+- Prompt 1.3: "<image>\nWhat are the player numbers?"
+<<<
+RATIONALE: Simple prompts may be more reliable and faster to process, providing baseline performance metrics.
+
+[REQUIREMENT]
+UID: REQ-003
+STATEMENT: >>>
+The system shall implement prompts that leverage DeepSeek-OCR's grounding capabilities for bounding box detection.
+
+Acceptance Criteria:
+- Prompt 2.1: "<image>\n<|grounding|>Locate and extract jersey numbers from this sports image"
+- Prompt 2.2: "<image>\n<|grounding|>Find all player jersey numbers with their positions"
+- Prompt 2.3: "<image>\n<|grounding|>Detect numeric text on soccer jerseys"
+<<<
+RATIONALE: Grounding-enhanced prompts provide spatial information about detected jersey numbers, enabling visual annotations and improved accuracy.
+
+[REQUIREMENT]
+UID: REQ-004
+STATEMENT: >>>
+The system shall implement detailed, task-specific prompts that provide comprehensive instructions for jersey number extraction.
+
+Acceptance Criteria:
+- Prompt 3.1: "<image>\nIdentify all visible jersey numbers worn by soccer players in this image. List each number."
+- Prompt 3.2: "<image>\nLocate player jerseys and extract the numbers printed on them"
+- Prompt 3.3: "<image>\nFind all numeric identifiers on sports uniforms"
+<<<
+RATIONALE: Detailed prompts may improve accuracy by providing specific context and instructions to the OCR model.
+
+[REQUIREMENT]
+UID: REQ-005
+STATEMENT: >>>
+The system shall implement prompts that provide contextual information about the sports domain.
+
+Acceptance Criteria:
+- Prompt 4.1: "<image>\nIn this soccer/football image, what jersey numbers are visible on the players?"
+- Prompt 4.2: "<image>\nLooking at the soccer players' uniforms, what numbers can you see?"
+<<<
+RATIONALE: Context-aware prompts help the model understand the specific domain and improve extraction accuracy.
+
+[REQUIREMENT]
+UID: REQ-006
+STATEMENT: >>>
+The system shall implement prompts specifically designed for OCR tasks with grounding support.
+
+Acceptance Criteria:
+- Prompt 5.1: "<image>\nPerform OCR on jersey numbers only. Focus on numeric text on player uniforms."
+- Prompt 5.2: "<image>\n<|grounding|>Extract all numeric text from soccer jerseys with bounding boxes"
+<<<
+RATIONALE: OCR-focused prompts optimize the model for text extraction tasks while maintaining spatial awareness.
+
+[REQUIREMENT]
+UID: REQ-007
+STATEMENT: >>>
+The system shall implement prompts framed as questions to leverage conversational AI capabilities.
+
+Acceptance Criteria:
+- Prompt 6.1: "<image>\nWhich player numbers are visible in this soccer match photo?"
+- Prompt 6.2: "<image>\nCan you identify the jersey numbers of the players?"
+<<<
+RATIONALE: Question-based prompts may improve model performance by utilizing natural language processing capabilities.
+
+[REQUIREMENT]
+UID: REQ-008
+STATEMENT: >>>
+The system shall provide comprehensive testing infrastructure for evaluating all prompt variations.
+
+Acceptance Criteria:
+- All prompts shall be tested against all images in jersies/ folder
+- Results shall be organized in jersies_analyzed/<category>.<variant>/ directories
+- Each test shall generate JSON results, annotated images, and processing metrics
+- Performance comparison report shall be generated
+<<<
+RATIONALE: Systematic testing enables objective comparison of prompt performance and identification of optimal strategies.
+
+[REQUIREMENT]
+UID: REQ-009
+STATEMENT: >>>
+The system shall organize test results in a structured directory hierarchy for easy comparison.
+
+Acceptance Criteria:
+- Results shall be organized as jersies_analyzed/<category_number>.<variant_number>/
+- Each directory shall contain JSON results, annotated images, and summary files
+- Comparison report shall be generated at jersies_analyzed/COMPARISON_REPORT.md
+<<<
+RATIONALE: Structured output enables systematic analysis and comparison of different prompt strategies.
+
+[REQUIREMENT]
+UID: REQ-010
+STATEMENT: >>>
+The system shall generate comprehensive performance analysis comparing all prompt variations.
+
+Acceptance Criteria:
+- Analysis shall include extraction accuracy metrics
+- Processing time comparison shall be provided
+- Bounding box accuracy shall be measured for grounding-enabled prompts
+- Recommendations for production use shall be included
+<<<
+RATIONALE: Performance analysis enables identification of optimal prompts for production deployment.
